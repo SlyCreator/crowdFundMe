@@ -15,14 +15,14 @@ return new class extends Migration
             $table->ulid('id')->primary();
             $table->ulid('user_id');
             $table->string('title');
-            $table->string('image_cover_url');
             $table->longText('description');
-            $table->dateTime('start_date')->nullable();
+            $table->string('cover_image_url');
+            $table->dateTime('start_date');
             $table->dateTime('end_date')->nullable();
-            $table->float('target_amount',8,2);
-            $table->float('current_amount',8,2);
-            $table->string('status');//on-going,suspended,completed
-            $table->
+            $table->float('goal',8,2);
+            $table->float('current_amount',8,2)->default(0)->nullable();
+            $table->string('slug');
+            $table->string('status')->default(\App\Models\Donation::STATUS_ZERO);
             $table->timestamps();
         });
     }
